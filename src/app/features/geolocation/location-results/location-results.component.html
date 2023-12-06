@@ -1,0 +1,15 @@
+<div class="my-4 w-full glass card-rounded">
+    <ng-container *ngFor="let loc of locations; let last=last">
+        <div class="flex space-x-4 items-center my-6 ml-6 mr-2 location-container h-8">
+            <img class="w-8 h-8" src="https://flagsapi.com/{{loc.country}}/flat/32.png">
+            <div class="flex flex-col grow">
+                <div class="text-lg leading-tight">{{loc.name}}</div>
+                <div class="text-sm font-thin leading-tight location-subtitle">{{ loc.state ? loc.state + ', ' : '' }} {{loc.country}}</div>
+            </div>
+            <button mat-icon-button class="location-select-button">
+                <mat-icon>arrow_forward</mat-icon>
+            </button>
+        </div>
+        <div *ngIf="!last"><mat-divider></mat-divider></div>
+    </ng-container>
+</div>

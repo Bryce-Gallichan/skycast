@@ -1,4 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/styles/custom-theme.scss';
+@import './assets/styles/partials/variables';
 
-html, body { height: 100%; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    height: 100%;
+    background-color: var(--background-color);
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// Tailwind override
+//Issue mith mat-label having border right
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field .mdc-notched-outline__notch { border-right-style: hidden; }
+
+// Issue with mat-icon-button icons being misaligned
+.mat-mdc-icon-button .material-icons {
+  margin-bottom: 0.25rem !important;
+}
+
+// Snackbar
+.mat-mdc-snack-bar-container {
+  &.snackbar-error {
+    --mdc-snackbar-container-color: rgba( 208, 2, 27, 0.7 );
+    --mat-mdc-snack-bar-button-color: #ffffff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}
+
+.mat-mdc-snack-bar-container {
+  &.snackbar-success {
+    --mdc-snackbar-container-color: #388E3C ;
+    --mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}
+
+// Glass effects
+.glass {
+  background: rgba( 155, 155, 155, 0.4 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.card-rounded {
+  border-radius: var(--border-radius);
+}
+
+.button-rounded {
+  border-radius: var(--border-radius) !important;
+}

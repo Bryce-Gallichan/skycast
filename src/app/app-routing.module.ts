@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'location',
     loadChildren: () => import('./features/geolocation/geolocation.module').then((m) => m.GeolocationModule),
-    canActivate: [geolocationGuard]
+    //canActivate: [geolocationGuard]
   },
   {
     path: '',

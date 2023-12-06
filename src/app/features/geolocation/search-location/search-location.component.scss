@@ -1,0 +1,59 @@
+@import '../../../../assets/styles/partials/variables';
+
+.search-input-container {
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius-round);
+    transition: border-color 0.2s ease-in-out;
+}
+
+.search-input-container:focus-within {
+    border: 1px solid rgba( 255, 255, 255, 0.7 );
+}
+  
+.search-input-field {
+    border: none;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    padding: 6px;
+}
+  
+.search-input-field::placeholder {
+    color: var(--text-muted); 
+}
+  
+.search-input-field::-webkit-input-placeholder {
+    color: var(--text-muted);  
+}
+
+.or-container {
+    position: relative;
+    text-align: center;
+}
+
+.or-container::before,
+.or-container::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: var(--text);
+    transform: translateY(-50%);
+}
+
+  .or-container::before {
+    left: 0;
+  }
+
+  .or-container::after {
+    right: 0;
+  }
+
+  .or-text {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    color: var(--text);
+  }

@@ -1,0 +1,114 @@
+@use '@angular/material' as mat;
+
+$primary-palette: (
+  50 : #edf7f0,
+  100 : #d3ebd8,
+  200 : #b6debf,
+  300 : #99d0a5,
+  400 : #83c691,
+  500 : #6dbc7e,
+  600 : #65b676,
+  700 : #5aad6b,
+  800 : #50a561,
+  900 : #3e974e,
+  A100 : #e9ffed,
+  A200 : #b6ffc3,
+  A400 : #83ff98,
+  A700 : #69ff83,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+$accent-palette: (
+  50 : #edf7f4,
+  100 : #d3ebe4,
+  200 : #b6ded3,
+  300 : #99d0c1,
+  400 : #83c6b3,
+  500 : #6dbca6,
+  600 : #65b69e,
+  700 : #5aad95,
+  800 : #50a58b,
+  900 : #3e977b,
+  A100 : #e9fff8,
+  A200 : #b6ffe7,
+  A400 : #83ffd7,
+  A700 : #69ffce,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+$warn-palette: (
+  50 : #fff1ed,
+  100 : #ffdcd1,
+  200 : #ffc5b2,
+  300 : #ffad93,
+  400 : #ff9c7c,
+  500 : #ff8a65,
+  600 : #ff825d,
+  700 : #ff7753,
+  800 : #ff6d49,
+  900 : #ff5a37,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ffe6e1,
+  A700 : #ffd0c8,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #000000,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+$primary: mat.define-palette($primary-palette, 500);
+$accent: mat.define-palette($accent-palette, 500);
+$warn: mat.define-palette($warn-palette, 500);
+
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));

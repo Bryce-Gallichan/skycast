@@ -1,0 +1,21 @@
+@import '../../../../assets/styles/partials/variables';
+
+.location-subtitle {
+    color: var(--text-muted);
+}
+
+.location-container:hover {
+    //background-color: var(--hover-highlight);
+    cursor: pointer;
+}
+
+.location-container:hover .location-select-button {
+    visibility: visible;
+    display: inline-block;
+}
+
+.location-select-button {
+    visibility: hidden;
+    display: none;
+    transition: opacity 0.3s, visibility 0.3s;
+}

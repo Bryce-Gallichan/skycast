@@ -10,14 +10,15 @@ import { Router } from '@angular/router';
   templateUrl: './geolocation.component.html',
   styleUrl: './geolocation.component.scss'
 })
-export class GeolocationComponent implements OnInit {
+export class GeolocationComponent {
 
   constructor(
     private geolocationService: GeolocationService,
     private snackbarService: SnackbarService,
-    private router: Router) {}
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
+  useMyLocation(): void {
     this.getCoordinates().pipe(
       filter((gl) => !!gl),
       switchMap((gl) => this.geolocationService.reverseGeocode(gl!.latitude, gl!.longitude))
@@ -40,7 +41,8 @@ export class GeolocationComponent implements OnInit {
           coordsSubject.complete();
         },
         (error: GeolocationPositionError) => {
-          coordsSubject.error('Something went wrong while getting your location'); 
+          console.log(error);
+          coordsSubject.error(error.message); 
         }
       );
     } else {
@@ -49,7 +51,7 @@ export class GeolocationComponent implements OnInit {
   
     return coordsSubject.asObservable().pipe(
       catchError((error) => {
-        this.snackbarService.showError(error);
+        this.snackbarService.showError(error, 150000);
         return of(undefined);
       }),
       take(1)

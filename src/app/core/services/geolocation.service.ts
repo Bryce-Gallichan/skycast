@@ -70,4 +70,35 @@ export class GeolocationService {
       })
     );
   }
+
+  locationToCoordinates(location: string): Observable<UserLocation[]> {
+    return this.http.get<GeocodeResponse[]>(
+      `${environment.geocodeUrl}/direct`, 
+      {
+        params: {
+          q: location,
+          limit: 3,
+          appid: environment.openWeatherKey
+        }
+      }
+    ).pipe(
+      map((response: GeocodeResponse[]) => {
+        let locations: UserLocation[] = [];
+
+        response.forEach(item => {
+          locations.push(
+            {
+              name: item.name,
+              lat: item.lat,
+              lon: item.lon,
+              country: item.country,
+              state: item.state ?? undefined
+            }
+          );
+        });
+
+        return locations;
+      })
+    );
+  }
 }
