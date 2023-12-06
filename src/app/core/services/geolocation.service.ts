@@ -1,36 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { GeoLocation } from '../models/geo-location.model';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GeocodingService {
+export class GeolocationService {
 
   private LOC_KEY: string = 'skycast-geolocation';
 
+  private geoLocation$ = new BehaviorSubject<GeoLocation | undefined>(undefined);
+
   constructor(private http: HttpClient) {
-
-    let geoLocation: GeoLocation = {
-      name: 'Denver',
-      lat: 0,
-      lng: 0,
-      country: 'US'
-    }
-
     const locStr = localStorage.getItem(this.LOC_KEY);
 
     if (locStr) {
       try {
-        geoLocation = JSON.parse(locStr) as GeoLocation;
+        this.geoLocation$.next(JSON.parse(locStr) as GeoLocation);
       } catch (error) {
         console.error('Error retrieving location data from local storage:', error);
       }
     }
+  }
 
-    console.log(geoLocation);
+  getGeolocation(): Observable<GeoLocation | undefined> {
+    return this.geoLocation$.asObservable();
   }
 
   reverseGeocode(lat: number, lng: number): Observable<GeoLocation[]> {
