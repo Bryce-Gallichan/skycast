@@ -1,7 +1,7 @@
-export interface GeoLocation {
+export interface UserLocation {
     name: string;
     lat: number;
-    lng: number;
+    lon: number;
     country: string;
     state?: string;
 }
