@@ -1,8 +1,15 @@
-<div class="h-full home-background flex p-4 md:p-0">
-    <div class="m-auto w-full sm:w-3/4 md:w-1/2 lg:w-1/4">
-       <div class="flex flex-col">
-        <div class="text-3xl">Location</div>
-        <div>{{geoLocation?.name}}, {{ geoLocation?.state ? geoLocation?.state + ', ' : '' }} {{geoLocation?.country}}</div>
-       </div>
+<div class="h-full home-background flex p-4 md:p-0"
+    [ngStyle]="{'background-image': 'url(../../../assets/backgrounds/' + backgroundName + ')'}">
+    <div class="m-auto w-full sm:w-3/4 md:w-2/3 lg:w-1/3">
+
+        <ng-container *ngIf="loading; else weatherComponents">
+            <app-loader></app-loader>
+        </ng-container>
+
+        <ng-template #weatherComponents>
+            <ng-container *ngIf="currentWeather">
+                <app-current-weather [currentWeather]="currentWeather"></app-current-weather>
+            </ng-container>
+        </ng-template>
     </div>
 </div>

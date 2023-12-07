@@ -8,10 +8,12 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 
 import { SpinnerComponent } from './spinner/spinner.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
-    SpinnerComponent
+    SpinnerComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
   ],
   exports: [
     SpinnerComponent,
+    LoaderComponent,
 
     CommonModule,
     MatFormFieldModule,

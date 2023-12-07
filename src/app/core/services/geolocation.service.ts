@@ -33,8 +33,6 @@ export class GeolocationService {
   setGeolocation(gl: UserLocation): void {
     try {
       const jsonData = JSON.stringify(gl);
-      console.log(gl);
-      console.log(jsonData);
       localStorage.setItem(this.LOC_KEY, jsonData);
       this.geoLocation$.next(gl);
     } catch (error) {

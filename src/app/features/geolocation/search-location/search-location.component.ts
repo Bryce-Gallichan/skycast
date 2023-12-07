@@ -48,7 +48,7 @@ export class SearchLocationComponent implements OnDestroy {
     this.loading = true;
 
     this.geolocationService.locationToCoordinates(this.searchTerm)
-    .pipe(take(1), tap(console.log))
+    .pipe(take(1))
     .subscribe(
       { 
         next: (results) => this.searchResults = results,
