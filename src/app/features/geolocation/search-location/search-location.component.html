@@ -25,19 +25,6 @@
         </ng-template>
     </div>
 
-    <ng-container *ngIf="!searchResults.length">
-        <div class="or-container mx-2 my-6">
-            <div class="or-text p-2 text-lg">OR</div>
-        </div>
-
-        <button mat-raised-button 
-            (click)="onUseMyLocation.emit()"
-            class="w-full flex button-rounded">
-            <mat-icon>my_location</mat-icon>
-            Use my location
-        </button>
-    </ng-container>
-
     <ng-container *ngIf="searchResults.length">
         <app-location-results 
             [locations]="searchResults"

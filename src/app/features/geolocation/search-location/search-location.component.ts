@@ -11,7 +11,6 @@ import { UserLocation } from '../../../core/models/user-location.model';
   styleUrl: './search-location.component.scss'
 })
 export class SearchLocationComponent implements OnDestroy {
-  @Output() onUseMyLocation = new EventEmitter();
   @Output() onSetLocation = new EventEmitter<UserLocation>();
 
   searchTerm?: string;

@@ -14,7 +14,7 @@
 .search-input-field {
     border: none;
     background-color: transparent;
-    color: white;
+    color: var(--text);
     outline: none;
     padding: 6px;
 }
@@ -26,34 +26,3 @@
 .search-input-field::-webkit-input-placeholder {
     color: var(--text-muted);  
 }
-
-.or-container {
-    position: relative;
-    text-align: center;
-}
-
-.or-container::before,
-.or-container::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 40%;
-    height: 1px;
-    background-color: var(--text);
-    transform: translateY(-50%);
-}
-
-  .or-container::before {
-    left: 0;
-  }
-
-  .or-container::after {
-    right: 0;
-  }
-
-  .or-text {
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    color: var(--text);
-  }
