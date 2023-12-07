@@ -1,0 +1,12 @@
+@import '../../../assets/styles/partials/variables';
+
+.home-background {
+    background-image: url('../../../assets/backgrounds/mountain-2.jpg');
+    height: 100%;
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    color: var(--text);
+  }

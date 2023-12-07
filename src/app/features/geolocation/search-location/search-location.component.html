@@ -39,6 +39,9 @@
     </ng-container>
 
     <ng-container *ngIf="searchResults.length">
-        <app-location-results [locations]="searchResults"></app-location-results>
+        <app-location-results 
+            [locations]="searchResults"
+            (onSetLocation)="onSetLocation.emit($event)">
+        </app-location-results>
     </ng-container>
 </div>

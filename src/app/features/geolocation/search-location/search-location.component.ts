@@ -12,25 +12,11 @@ import { UserLocation } from '../../../core/models/user-location.model';
 })
 export class SearchLocationComponent implements OnDestroy {
   @Output() onUseMyLocation = new EventEmitter();
+  @Output() onSetLocation = new EventEmitter<UserLocation>();
 
   searchTerm?: string;
   loading: boolean = false;
-  searchResults: UserLocation[] = [
-    // {
-    //     "name": "Germiston",
-    //     "lat": -26.229444,
-    //     "lon": 28.180556,
-    //     "country": "ZA",
-    //     "state": "Gauteng"
-    // },
-    // {
-    //     "name": "Germiston",
-    //     "lat": 55.8759103,
-    //     "lon": -4.2137003,
-    //     "country": "GB",
-    //     "state": "Scotland"
-    // }
-  ];
+  searchResults: UserLocation[] = [];
 
   private onDestroy$ = new Subject<void>();
   private searchSubject$: Subject<string> = new Subject<string>();

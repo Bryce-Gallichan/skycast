@@ -1,5 +1,8 @@
 <div class="h-full geolocation-background flex p-4 md:p-0">
     <div class="m-auto w-full sm:w-3/4 md:w-1/2 lg:w-1/4">
-        <app-search-location (onUseMyLocation)="useMyLocation()"></app-search-location>
+        <app-search-location 
+            (onUseMyLocation)="useMyLocation()"
+            (onSetLocation)="setGeolocation($event)">
+        </app-search-location>
     </div>
 </div>

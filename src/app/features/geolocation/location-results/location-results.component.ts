@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserLocation } from '../../../core/models/user-location.model';
 
 @Component({
@@ -8,4 +8,5 @@ import { UserLocation } from '../../../core/models/user-location.model';
 })
 export class LocationResultsComponent {
   @Input() locations: UserLocation[] = [];
+  @Output() onSetLocation = new EventEmitter<UserLocation>();
 }
