@@ -3,13 +3,15 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
+import { ConditionsComponent } from './conditions/conditions.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    CurrentWeatherComponent
+    CurrentWeatherComponent,
+    ConditionsComponent
   ],
   imports: [
     SharedModule,

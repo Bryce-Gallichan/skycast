@@ -1,0 +1,31 @@
+<div class="w-full h-full flex flex-row lg:flex-col space-x-4 lg:space-x-0 lg:space-y-4">
+    <div class="flex flex-col lg:flex-row lg:space-x-4 flex-1 items-center justify-center lg:justify-start glass card-rounded p-2">
+        <img class="w-8 h-8 mx-2" src="/assets/icons/wind.svg"/>
+        <div class="flex flex-col items-center lg:items-start m-1">
+            <span class="text-xl leading-tight">Wind</span>
+            <span class="text-base font-thin leading-tight">{{windSpeed}} mph</span>
+        </div>
+    </div>
+
+    <div class="flex flex-col lg:flex-row lg:space-x-4 flex-1 items-center justify-center lg:justify-start glass card-rounded p-2">
+        <img class="w-8 h-8 mx-2" src="/assets/icons/humidity.svg"/>
+        <div class="flex flex-col items-center lg:items-start m-1">
+            <span class="text-xl leading-tight">Humidity</span>
+            <span class="text-base font-thin leading-tight">{{humidity}}%</span>
+        </div>
+    </div>
+
+    <div class="flex flex-col space-y-2 lg:space-y-0 lg:flex-row justify-around flex-1 items-center glass card-rounded p-2">
+        <div class="flex flex-col items-center">
+            <img class="w-8 h-8 mx-2" src="/assets/icons/sunrise.svg"/>
+            <span class="text-xl leading-tight">Sunrise</span>
+            <span class="text-base font-thin leading-tight">{{ (sunrise+timezone)*1000 | date:'HH:mm' : 'UTC' }}</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+            <img class="w-8 h-8 mx-2" src="/assets/icons/sunset.svg"/>
+            <span class="text-xl leading-tight">Sunset</span>
+            <span class="text-base font-thin leading-tight">{{ (sunset+timezone)*1000 | date :'HH:mm' : 'UTC' }}</span>
+        </div>
+    </div>
+</div>

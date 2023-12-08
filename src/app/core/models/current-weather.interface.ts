@@ -43,5 +43,7 @@ export interface CurrentWeather {
     id: number;
     name: string;
     cod: number;
+
     image?: string;
+    path?: string;
 }

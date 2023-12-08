@@ -1,23 +1,20 @@
-<div class="glass card-rounded">
-    <div class="grid grid-cols-12 gap-2 p-2">
-        <div class="flex col-span-12 items-center justify-center">
+<div class="glass card-rounded h-full">
+    <div class="h-full grid grid-cols-12 p-4">
+        <div class="flex flex-col items-center justify-center col-span-12 lg:col-span-6 p-2 border-b lg:border-b-0 lg:border-r border-divider">
             <button mat-button class="button-rounded" [routerLink]="['/location']">
                 <div class="flex items-center space-x-2 location-button">
-                    <img class="w-6 h-6 object-cover" src="https://flagsapi.com/{{currentWeather.sys.country}}/flat/32.png">
+                    <img class="w-4 h-4 object-cover" src="https://flagsapi.com/{{currentWeather.sys.country}}/flat/32.png">
                     <div class="truncate">{{currentWeather.name}}</div>
                 </div>
             </button>
-        </div>
-
-        <div class="flex flex-col items-center justify-center col-span-12 lg:col-span-6 p-2 border-b lg:border-b-0 lg:border-r border-divider">
-            <div class="text-8xl font-bold truncate">{{currentWeather.main.temp}}</div>
+            <div class="text-8xl font-bold truncate">{{currentWeather.main.temp}}°</div>
             <div class="text-2xl">{{currentWeather.weather[0].description}}</div>
         </div>
 
-        <div class="flex flex-col items-center justify-center col-span-12 lg:col-span-6">
-            <img class="w-32 h-32 mb-4" [src]="'../../../../assets/icons/' + currentWeather.image"/>
-            <div class="text-lg">{{currentWeather.main.temp_max}}° | {{currentWeather.main.temp_min}}°</div>
-            <div class="text-lg">Feels like {{currentWeather.main.feels_like}}°</div>
+        <div class="flex flex-col items-center justify-center col-span-12 mt-2 lg:col-span-6">
+            <img class="w-32 h-32 mb-4" src="../../../../assets/icons/{{currentWeather.path}}/{{currentWeather.image}}"/>
+            <div class="text-xl">{{currentWeather.main.temp_max}}° | {{currentWeather.main.temp_min}}°</div>
+            <div class="text-lg font-thin">Feels like {{currentWeather.main.feels_like}}°</div>
         </div>
     </div>
 </div>
