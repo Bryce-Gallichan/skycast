@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CurrentWeather } from '../../../core/models/current-weather.interface';
+import { Units } from '../../../core/models/units.enum';
 
 @Component({
   selector: 'app-current-weather',
@@ -8,7 +9,9 @@ import { CurrentWeather } from '../../../core/models/current-weather.interface';
 })
 export class CurrentWeatherComponent implements OnChanges {
   @Input() currentWeather!: CurrentWeather;
+  @Input() units: Units = Units.IMPERIAL;
   @Output() onUpdateWeather = new EventEmitter();
+  @Output() onSetUnits = new EventEmitter<Units>();
 
   updateLoading: boolean = false;
 
@@ -20,6 +23,10 @@ export class CurrentWeatherComponent implements OnChanges {
   updateWeather(): void {
     this.updateLoading = true;
     this.onUpdateWeather.emit();
+  }
+
+  setUnits(): void {
+    this.onSetUnits.emit(this.units);
   }
 
   roundTemps(): void {

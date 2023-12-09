@@ -5,7 +5,8 @@ import { SharedModule } from '../shared/shared.module';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
 import { ConditionsComponent } from './conditions/conditions.component';
 
-
+import {MatMenuModule} from '@angular/material/menu';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,8 @@ import { ConditionsComponent } from './conditions/conditions.component';
   imports: [
     SharedModule,
     HomeRoutingModule,
+    MatMenuModule,
+    MatRadioModule
   ]
 })
 export class HomeModule { }

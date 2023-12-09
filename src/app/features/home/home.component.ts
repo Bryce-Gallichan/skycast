@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GeolocationService } from '../../core/services/geolocation.service';
-import { Subject, filter, switchMap, take, takeUntil, tap } from 'rxjs';
+import { BehaviorSubject, Subject, filter, switchMap, take, takeUntil, tap } from 'rxjs';
 import { WeatherService } from '../../core/services/weather.service';
 import { CurrentWeather } from '../../core/models/current-weather.interface';
 import { UserLocation } from '../../core/models/user-location.model';
+import { Units } from '../../core/models/units.enum';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,9 @@ import { UserLocation } from '../../core/models/user-location.model';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private onDestroy$ = new Subject<void>();
+
+  private UNITS_KEY: string = 'skycast-units';
+  units$ = new BehaviorSubject<Units>(Units.METRIC);
 
   backgroundName: string = '';
   timePath: string = '';
@@ -27,6 +31,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loading = false;
+
+    const units = localStorage.getItem(this.UNITS_KEY);
+    if (units === 'imperial' || units === 'metric') this.units$.next(units as Units);
 
     const useTestData = false;
 
@@ -100,9 +107,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getCurrentWeather(): void {
     if (this.locationData) {
-      this.weatherService.getCurrentWeather(this.locationData.lat, this.locationData.lon)
-        .pipe(take(1))
-        .subscribe({
+      this.units$.asObservable()
+        .pipe(
+          takeUntil(this.onDestroy$),
+          switchMap(units => this.weatherService.getCurrentWeather(
+            this.locationData!.lat, 
+            this.locationData!.lon,
+            units
+          ).pipe(take(1)))
+        ).subscribe({
           next: (weather) => {
             this.currentWeather = this.refineWeather(weather);
             this.loading = false;
@@ -110,6 +123,11 @@ export class HomeComponent implements OnInit, OnDestroy {
           complete: () => this.loading = false,
         });
     }
+  }
+
+  setUnits(units: Units): void {
+    localStorage.setItem(this.UNITS_KEY, units);
+    this.units$.next(units);
   }
 
   refineWeather(weather: CurrentWeather): CurrentWeather {

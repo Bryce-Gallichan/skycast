@@ -1,4 +1,24 @@
-<div class="glass card-rounded h-full">
+<div class="glass relative card-rounded h-full">
+    <div class="absolute top-0 right-0">
+        <button class="text-white" 
+            mat-icon-button
+            [matMenuTriggerFor]="menu">
+            <mat-icon>settings</mat-icon>
+        </button>
+
+        <mat-menu #menu>
+            <div class="menu-contents p-1">
+                <mat-radio-group [(ngModel)]="units"
+                    (ngModelChange)="setUnits()" 
+                    color="primary"
+                    class="flex flex-col">
+                    <mat-radio-button value="imperial">°F</mat-radio-button>
+                    <mat-radio-button value="metric">°C</mat-radio-button>
+                </mat-radio-group>
+            </div>
+          </mat-menu>
+    </div>
+
     <div class="h-full grid grid-cols-12 p-4">
         <div class="flex flex-col items-center justify-center col-span-12 lg:col-span-6 px-2 pb-4 lg:pb-0 border-b lg:border-b-0 lg:border-r border-divider">
             <button mat-button class="button-rounded" [routerLink]="['/location']">

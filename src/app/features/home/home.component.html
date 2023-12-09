@@ -1,5 +1,6 @@
-<div class="h-full home-background flex p-4 md:p-0"
+<div class="h-full flex flex-col home-background p-4 md:p-0"
     [ngStyle]="{'background-image': 'url(../../../assets/backgrounds/' + timePath + '/' + backgroundName + ')'}">
+
     <div class="m-auto w-full sm:w-3/4 md:w-2/3 lg:w-1/2">
 
         <ng-container *ngIf="loading; else weatherComponents">
@@ -11,7 +12,9 @@
                 <div class="col-span-12 lg:col-span-8">
                     <app-current-weather 
                         [currentWeather]="currentWeather"
-                        (onUpdateWeather)="getCurrentWeather()">
+                        [units]="(units$ | async)!"
+                        (onUpdateWeather)="getCurrentWeather()"
+                        (onSetUnits)="setUnits($event)">
                     </app-current-weather>
                 </div>
 
