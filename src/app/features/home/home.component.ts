@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GeolocationService } from '../../core/services/geolocation.service';
-import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
+import { Subject, filter, switchMap, take, takeUntil, tap } from 'rxjs';
 import { WeatherService } from '../../core/services/weather.service';
 import { CurrentWeather } from '../../core/models/current-weather.interface';
+import { UserLocation } from '../../core/models/user-location.model';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   loading: boolean = true;
   currentWeather?: CurrentWeather; 
+  locationData?: UserLocation; 
 
   constructor(
     private geolocationService: GeolocationService,
@@ -26,67 +28,88 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loading = false;
 
-    // this.currentWeather = {
-    //   "image": "storm.svg",
-    //   "path": "night",
-    //   "coord": {
-    //       "lon": -104.9847,
-    //       "lat": 39.7392
-    //   },
-    //   "weather": [
-    //       {
-    //           "id": 800,
-    //           "main": "Clear",
-    //           "description": "clear sky",
-    //           "icon": "01d"
-    //       }
-    //   ],
-    //   "base": "stations",
-    //   "main": {
-    //       "temp": 62,
-    //       "feels_like": 58,
-    //       "temp_min": 53,
-    //       "temp_max": 65,
-    //       "pressure": 1001,
-    //       "humidity": 18
-    //   },
-    //   "visibility": 10000,
-    //   "wind": {
-    //       "speed": 15.01,
-    //       "deg": 289
-    //   },
-    //   "clouds": {
-    //       "all": 0
-    //   },
-    //   "dt": 1701992128,
-    //   "sys": {
-    //       "type": 2,
-    //       "id": 2004334,
-    //       "country": "US",
-    //       "sunrise": 1701958053,
-    //       "sunset": 1701992128
-    //   },
-    //   "timezone": -25200,
-    //   "id": 5419384,
-    //   "name": "Denver",
-    //   "cod": 200
-    // };
+    const useTestData = false;
 
-    this.geolocationService.getGeolocation()
+    if (useTestData) {
+      this.useTestData();
+    } else {
+      this.geolocationService.getGeolocation()
       .pipe(
         takeUntil(this.onDestroy$),
-        filter(loc => !!loc),
-        switchMap(loc => this.weatherService.getCurrentWeather(loc!.lat, loc!.lon))
+        filter(loc => !!loc)
       )
       .subscribe({
+          next: (loc) => {
+            this.locationData = loc;
+            this.getCurrentWeather(); 
+          }
+        } 
+      );
+    }
+  }
+
+  useTestData(): void {
+    this.backgroundName = 'mist.jpg';
+    this.timePath = 'day';
+    this.currentWeather = {
+      "image": "storm.svg",
+      "path": "night",
+      "coord": {
+          "lon": -104.9847,
+          "lat": 39.7392
+      },
+      "weather": [
+          {
+              "id": 800,
+              "main": "Clear",
+              "description": "clear sky",
+              "icon": "01d"
+          }
+      ],
+      "base": "stations",
+      "main": {
+          "temp": 62,
+          "feels_like": 58,
+          "temp_min": 53,
+          "temp_max": 65,
+          "pressure": 1001,
+          "humidity": 18
+      },
+      "visibility": 10000,
+      "wind": {
+          "speed": 15,
+          "deg": 289
+      },
+      "clouds": {
+          "all": 0
+      },
+      "dt": 1701992128,
+      "sys": {
+          "type": 2,
+          "id": 2004334,
+          "country": "US",
+          "sunrise": 1701958053,
+          "sunset": 1701992128
+      },
+      "timezone": -25200,
+      "id": 5419384,
+      "name": "Denver",
+      "cod": 200
+    };
+  }
+
+  getCurrentWeather(): void {
+    if (this.locationData) {
+      this.weatherService.getCurrentWeather(this.locationData.lat, this.locationData.lon)
+        .pipe(take(1))
+        .subscribe({
           next: (weather) => {
             this.currentWeather = this.refineWeather(weather);
-            console.log(weather);
             this.loading = false;
           },
           complete: () => this.loading = false,
-        } 
-      );
+        });
+    }
   }
 
   refineWeather(weather: CurrentWeather): CurrentWeather {

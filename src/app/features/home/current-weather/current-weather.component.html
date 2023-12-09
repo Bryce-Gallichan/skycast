@@ -1,6 +1,6 @@
 <div class="glass card-rounded h-full">
     <div class="h-full grid grid-cols-12 p-4">
-        <div class="flex flex-col items-center justify-center col-span-12 lg:col-span-6 p-2 border-b lg:border-b-0 lg:border-r border-divider">
+        <div class="flex flex-col items-center justify-center col-span-12 lg:col-span-6 px-2 pb-4 lg:pb-0 border-b lg:border-b-0 lg:border-r border-divider">
             <button mat-button class="button-rounded" [routerLink]="['/location']">
                 <div class="flex items-center space-x-2 location-button">
                     <img class="w-4 h-4 object-cover" src="https://flagsapi.com/{{currentWeather.sys.country}}/flat/32.png">
@@ -9,6 +9,16 @@
             </button>
             <div class="text-8xl font-bold truncate">{{currentWeather.main.temp}}°</div>
             <div class="text-2xl">{{currentWeather.weather[0].description}}</div>
+            <div class="h-8 flex mt-2 items-center cursor-pointer" (click)="updateWeather()">
+                <div *ngIf="updateLoading; else refreshIcon" class="mr-2">
+                    <app-spinner [diameter]="10"></app-spinner>
+                </div>
+                <ng-template #refreshIcon>
+                    <mat-icon class="scale-75">refresh</mat-icon>
+                </ng-template>
+                
+                <span class="text-xs font-thin">Last updated {{currentWeather.dt*1000 | date: 'short'}}</span>
+            </div>
         </div>
 
         <div class="flex flex-col items-center justify-center col-span-12 mt-2 lg:col-span-6">

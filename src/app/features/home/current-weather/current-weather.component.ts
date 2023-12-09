@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CurrentWeather } from '../../../core/models/current-weather.interface';
 
 @Component({
@@ -8,9 +8,18 @@ import { CurrentWeather } from '../../../core/models/current-weather.interface';
 })
 export class CurrentWeatherComponent implements OnChanges {
   @Input() currentWeather!: CurrentWeather;
+  @Output() onUpdateWeather = new EventEmitter();
+
+  updateLoading: boolean = false;
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.updateLoading = false;
     this.roundTemps();
+  }
+
+  updateWeather(): void {
+    this.updateLoading = true;
+    this.onUpdateWeather.emit();
   }
 
   roundTemps(): void {

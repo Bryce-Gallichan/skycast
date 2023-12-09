@@ -9,7 +9,10 @@
         <ng-template #weatherComponents>
             <div class="grid grid-cols-12 gap-4 " *ngIf="currentWeather">
                 <div class="col-span-12 lg:col-span-8">
-                    <app-current-weather [currentWeather]="currentWeather"></app-current-weather>
+                    <app-current-weather 
+                        [currentWeather]="currentWeather"
+                        (onUpdateWeather)="getCurrentWeather()">
+                    </app-current-weather>
                 </div>
 
                 <div class="col-span-12 lg:col-span-4">
