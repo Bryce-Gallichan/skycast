@@ -1,10 +1,18 @@
 <div class="glass relative card-rounded h-full">
     <div class="absolute top-0 right-0">
-        <button class="text-white" 
-            mat-icon-button
-            [matMenuTriggerFor]="menu">
-            <mat-icon>settings</mat-icon>
-        </button>
+        <div class="flex items-center space-x-1">
+            <mat-icon *ngIf="isDevMode"
+                class="text-red-600"
+                matTooltip="Application is running in development mode"
+                matTooltipPosition="below">
+                bug_report
+            </mat-icon>
+            <button class="text-white" 
+                mat-icon-button
+                [matMenuTriggerFor]="menu">
+                <mat-icon>settings</mat-icon>
+            </button>
+        </div>
 
         <mat-menu #menu>
             <div class="menu-contents p-1">

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Units } from '../../../core/models/units.enum';
 
 @Component({
@@ -6,7 +6,7 @@ import { Units } from '../../../core/models/units.enum';
   templateUrl: './conditions.component.html',
   styleUrl: './conditions.component.scss'
 })
-export class ConditionsComponent implements OnInit {
+export class ConditionsComponent implements OnChanges {
   @Input() windSpeed: number = 15;
   @Input() humidity: number = 18;
   @Input() sunrise: number = 0;
@@ -16,7 +16,7 @@ export class ConditionsComponent implements OnInit {
 
   unitLabel: string = 'm/s'
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.unitLabel = this.units === Units.IMPERIAL ? 'mph' : 'm/s';
   }
 }

@@ -1,14 +1,14 @@
-<div class="h-full flex flex-col home-background p-4 md:p-0"
+<div class="h-full flex flex-col home-background md:p-0"
     [ngStyle]="{'background-image': 'url(../../../assets/backgrounds/' + timePath + '/' + backgroundName + ')'}">
 
-    <div class="m-auto w-full sm:w-3/4 md:w-2/3 lg:w-1/2">
+    <div class="lg:m-auto w-full h-full p-4 items-center justify-center overflow-y-auto sm:w-3/4 md:w-2/3 lg:w-1/2">
 
         <ng-container *ngIf="loading; else weatherComponents">
             <app-loader></app-loader>
         </ng-container>
 
         <ng-template #weatherComponents>
-            <div class="grid grid-cols-12 gap-4 " *ngIf="currentWeather">
+            <div class="grid grid-cols-12 self-center gap-4" *ngIf="currentWeather">
                 <div class="col-span-12 lg:col-span-8">
                     <app-current-weather 
                         [currentWeather]="currentWeather"
@@ -24,7 +24,8 @@
                         [humidity]="currentWeather.main.humidity"
                         [sunrise]="currentWeather.sys.sunrise"
                         [sunset]="currentWeather.sys.sunset"
-                        [timezone]="currentWeather.timezone">
+                        [timezone]="currentWeather.timezone"
+                        [units]="(units$ | async)!">
                     </app-conditions>
                 </div>
             </div>

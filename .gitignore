@@ -135,3 +135,6 @@ dist
 
 # Angular
 .angular
+
+# Firebase
+.firebase

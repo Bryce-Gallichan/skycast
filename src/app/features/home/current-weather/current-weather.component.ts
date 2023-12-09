@@ -1,19 +1,25 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CurrentWeather } from '../../../core/models/current-weather.interface';
 import { Units } from '../../../core/models/units.enum';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-current-weather',
   templateUrl: './current-weather.component.html',
   styleUrl: './current-weather.component.scss'
 })
-export class CurrentWeatherComponent implements OnChanges {
+export class CurrentWeatherComponent implements OnChanges, OnInit {
   @Input() currentWeather!: CurrentWeather;
   @Input() units: Units = Units.IMPERIAL;
   @Output() onUpdateWeather = new EventEmitter();
   @Output() onSetUnits = new EventEmitter<Units>();
 
   updateLoading: boolean = false;
+  isDevMode: boolean = false;
+
+  ngOnInit(): void {
+    this.isDevMode = !environment.production;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.updateLoading = false;
