@@ -1,7 +1,7 @@
-<div class="h-full flex flex-col home-background md:p-0"
+<div class="h-screen flex flex-col home-background md:p-0"
     [ngStyle]="{'background-image': 'url(../../../assets/backgrounds/' + timePath + '/' + backgroundName + ')'}">
 
-    <div class="lg:m-auto w-full h-full p-4 items-center justify-center overflow-y-auto sm:w-3/4 md:w-2/3 lg:w-1/2">
+    <div class="m-auto w-full p-4 items-center justify-center overflow-y-auto sm:w-3/4 md:w-2/3 lg:w-1/2">
 
         <ng-container *ngIf="loading; else weatherComponents">
             <app-loader></app-loader>
