@@ -25,7 +25,7 @@ export class HourlyChartComponent implements OnInit {
           {
             label: "Temperature",
             data: this.data.map(x => x.temperature),
-            backgroundColor: 'blue',
+            backgroundColor: '#190482',
             fill: false,
             cubicInterpolationMode: 'monotone',
           },
@@ -49,15 +49,7 @@ export class HourlyChartComponent implements OnInit {
             },
             border: {
               display: false
-            },
-            // border: {
-            //   display: BORDER
-            // },
-            // grid: {
-            //   display: DISPLAY,
-            //   drawOnChartArea: CHART_AREA,
-            //   drawTicks: TICKS,
-            // }
+            }
           },
           y: {
             grid: {
@@ -68,18 +60,7 @@ export class HourlyChartComponent implements OnInit {
             },
             border: {
               display: false
-            },
-            // grid: {
-            //   color: function(context) {
-            //     if (context.tick.value > 0) {
-            //       return Utils.CHART_COLORS.green;
-            //     } else if (context.tick.value < 0) {
-            //       return Utils.CHART_COLORS.red;
-            //     }
-    
-            //     return '#000000';
-            //   },
-            // },
+            }
           }
         }
       } 
