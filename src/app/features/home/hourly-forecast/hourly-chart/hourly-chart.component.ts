@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 import { HourlyForecastChartData } from '../../../../core/models/hourly-forecast-chart-data.interface';
 
@@ -7,17 +7,20 @@ import { HourlyForecastChartData } from '../../../../core/models/hourly-forecast
   templateUrl: './hourly-chart.component.html',
   styleUrl: './hourly-chart.component.scss'
 })
-export class HourlyChartComponent implements OnInit {
+export class HourlyChartComponent implements OnChanges {
+  @ViewChild('hourlyChart', { static: false }) chartCanvas!: ElementRef<HTMLCanvasElement>;
   @Input() data: HourlyForecastChartData[] = [];
   chart?: any;
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.createChart();
   }
 
   createChart(){
-  
-    this.chart = new Chart("HourlyChart", {
+
+    if (this.chart) this.chart.destroy();
+    
+    this.chart = new Chart("hourlyChart", {
       type: 'line',
       data: {
         labels: this.data.map(x => x.time), 
