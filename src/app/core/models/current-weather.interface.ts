@@ -45,5 +45,5 @@ export interface CurrentWeather {
     cod: number;
 
     image?: string;
-    path?: string;
+    pod?: string;
 }

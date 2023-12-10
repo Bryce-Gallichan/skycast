@@ -1,5 +1,5 @@
 <div class="h-screen flex flex-col home-background md:p-0"
-    [ngStyle]="{'background-image': 'url(../../../assets/backgrounds/' + timePath + '/' + backgroundName + ')'}">
+    [ngStyle]="{'background-image': 'url(../../../assets/backgrounds/' + pod + '/' + backgroundImage + ')'}">
 
     <div class="m-auto w-full p-4 items-center justify-center overflow-y-auto sm:w-3/4 md:w-2/3 lg:w-1/2">
 
@@ -27,6 +27,10 @@
                         [timezone]="currentWeather.timezone"
                         [units]="(units$ | async)!">
                     </app-conditions>
+                </div>
+
+                <div class="col-span-12">
+                    <app-hourly-forecast [hourlyForecast]="hourlyForecast"></app-hourly-forecast>
                 </div>
             </div>
         </ng-template>

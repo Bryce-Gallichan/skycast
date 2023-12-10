@@ -7,12 +7,16 @@ import { ConditionsComponent } from './conditions/conditions.component';
 
 import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
+import { HourlyForecastComponent } from './hourly-forecast/hourly-forecast.component';
+import { HourlyChartComponent } from './hourly-forecast/hourly-chart/hourly-chart.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     CurrentWeatherComponent,
-    ConditionsComponent
+    ConditionsComponent,
+    HourlyForecastComponent,
+    HourlyChartComponent,
   ],
   imports: [
     SharedModule,
