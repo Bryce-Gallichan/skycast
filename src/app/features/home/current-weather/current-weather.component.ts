@@ -17,6 +17,8 @@ export class CurrentWeatherComponent implements OnChanges, OnInit {
   updateLoading: boolean = false;
   isDevMode: boolean = false;
 
+  dateFormat: string = '';
+
   ngOnInit(): void {
     this.isDevMode = !environment.production;
   }
@@ -24,6 +26,8 @@ export class CurrentWeatherComponent implements OnChanges, OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     this.updateLoading = false;
     this.roundTemps();
+    this.dateFormat = this.isTimestampToday(this.currentWeather.last_updated || 0) ?
+      'HH:mm' : 'short'
   }
 
   updateWeather(): void {
@@ -33,6 +37,17 @@ export class CurrentWeatherComponent implements OnChanges, OnInit {
 
   setUnits(): void {
     this.onSetUnits.emit(this.units);
+  }
+
+  isTimestampToday(timestamp: number): boolean {
+    const targetDate = new Date(timestamp);
+    const currentDate = new Date();
+
+    return (
+      targetDate.getFullYear() === currentDate.getFullYear() &&
+      targetDate.getMonth() === currentDate.getMonth() &&
+      targetDate.getDate() === currentDate.getDate()
+    );
   }
 
   roundTemps(): void {

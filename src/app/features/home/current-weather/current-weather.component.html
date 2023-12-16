@@ -45,7 +45,7 @@
                     <mat-icon class="scale-75">refresh</mat-icon>
                 </ng-template>
                 
-                <span class="text-xs font-thin">Last updated {{currentWeather.dt*1000 | date: 'short'}}</span>
+                <span class="text-xs font-thin">Last updated {{currentWeather.last_updated | date: dateFormat}}</span>
             </div>
         </div>
 

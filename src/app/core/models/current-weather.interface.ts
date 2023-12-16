@@ -46,4 +46,5 @@ export interface CurrentWeather {
 
     image?: string;
     pod?: string;
+    last_updated?: number;
 }

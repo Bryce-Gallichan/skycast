@@ -423,6 +423,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.pod = (weather.dt > weather.sys.sunrise && weather.dt < weather.sys.sunset) ? 'day' : 'night';
     weather.pod = this.pod;
 
+    weather.last_updated = new Date().getTime();
+
     return weather;
   }
 
