@@ -1,27 +1,46 @@
 # Skycast
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+![Skycast Screenshot](/src/assets/screenshots/home.png)
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This Angular Weather application provides a user-friendly interface to check the current weather and dynamic time-of-day theming based on the user's location. The app utilizes Angular version 17 for its frontend, Tailwind CSS for styling, and is hosted on Firebase.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Dynamic Theming:** The app dynamically adjusts its theme based on the time of day, providing a visually appealing experience for users.
 
-## Build
+- **Real-Time Weather Data:** Utilizing a [OpenWeather API](https://openweathermap.org/api), the app displays accurate and up-to-date weather information for the user's location.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Technologies Used
 
-## Running unit tests
+- **Angular v17:** A powerful and widely-used front-end framework for building dynamic web applications.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Tailwind CSS:** A utility-first CSS framework that makes styling and customization efficient and easy.
 
-## Running end-to-end tests
+- **Firebase Hosting:** Reliable and scalable hosting for web applications, ensuring a seamless deployment experience.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Deployment
 
-## Further help
+The application is deployed and accessible online. Visit the deployed website to experience Skycast: [Deployed App](https://skycast.gallichan.app)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Getting Started
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/Bryce-Gallichan/skycast.git
+   ```
+
+2. **Install Dependencies:**
+   ```bash
+   cd skycast
+   npm install
+   ```
+
+3. **Run the App:**
+   ```bash
+   ng serve
+   ```
+
+## Contact
+For any questions or issues, please contact the developer at gallichan.bryce@gmail.com.
