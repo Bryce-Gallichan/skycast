@@ -6,8 +6,7 @@ import { homeGuard } from './core/guards/home.guard';
 const routes: Routes = [
   {
     path: 'location',
-    loadChildren: () => import('./features/geolocation/geolocation.module').then((m) => m.GeolocationModule),
-    //canActivate: [geolocationGuard]
+    loadChildren: () => import('./features/geolocation/geolocation.module').then((m) => m.GeolocationModule)
   },
   {
     path: '',

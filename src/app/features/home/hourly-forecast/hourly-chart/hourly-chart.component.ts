@@ -35,8 +35,8 @@ export class HourlyChartComponent implements OnChanges {
         ]
       },
       options: {
-        aspectRatio:10,
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             display: false 

@@ -67,7 +67,7 @@ export class GeolocationComponent implements AfterViewInit, OnDestroy {
   
     return coordsSubject.asObservable().pipe(
       catchError((error) => {
-        this.snackbarService.showError(error, 150000);
+        this.snackbarService.showError(error, 5000);
         return of(undefined);
       }),
       take(1)

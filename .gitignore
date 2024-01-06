@@ -131,6 +131,7 @@ dist
 
 # misc
 .DS_Store
+.VSCodeCounter
 /backgrounds
 
 # Angular
