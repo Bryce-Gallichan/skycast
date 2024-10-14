@@ -38,11 +38,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 // Glass effects
+
 .glass {
-  background: rgba( 255, 255, 255, 0.35 );
-  box-shadow: 0 8px 12px 0 rgba(112, 112, 112, 0.3);
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
+  background: rgba( 255, 255, 255, 0.7 );
+  box-shadow: 0 2px 8px 0 rgba( 0, 0, 0, 0.35 );
+  backdrop-filter: blur( 8px );
+  -webkit-backdrop-filter: blur( 8px );
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
